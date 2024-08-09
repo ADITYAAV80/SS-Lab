@@ -1,0 +1,30 @@
+class Solution:
+    def QS(self,arr,l,r):
+        i, j = l, r
+        pivot = arr[l]
+        while i<j:
+            while i<r and arr[i]<=pivot:
+                i+=1
+            while j>l and arr[j]>pivot:
+                j-=1
+            if i<j:
+                arr[i], arr[j] = arr[j], arr[i]
+        print("1",arr)
+        arr[j], arr[l] = arr[l], arr[j]
+        print("2",arr)
+        return j
+
+    def partition(self, arr, l, r):
+        if l<r:
+            j = self.QS(arr,l,r)
+            self.partition(arr,l,j-1)
+            self.partition(arr,j+1,r)
+        return arr
+
+    def quickSort(self, nums):
+        l, r = 0, len(nums)-1
+        ans = self.partition(nums,l,r)
+        return ans
+    
+solution=Solution()
+print(solution.quickSort([5,6,2,1,9,0,3]))

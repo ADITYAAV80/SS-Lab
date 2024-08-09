@@ -1,0 +1,20 @@
+/*
+NAME: Aditya AV
+ROLLNO: MT2024009
+PROGRAM:
+3. Write a program to create a file and print the file descriptor value. Use creat ( ) system call
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+1) Compile and execute the program : pg3.c
+
+Additional info:
+File descriptors are created for every process 
+Value can range from 0 - 1023
+Default
+0 - Stdin
+1 - Stdout
+2 - Stderror
+Keeps on assigning the minimum value available 
+
+ 

@@ -1,0 +1,42 @@
+/*
+
+NAME : Aditya AV
+ROLL NO : MT2024009
+PROGRAM : Create the following types of a files using shell command
+ a. soft link (symlink system call)
+ b. hard link (link system call)
+ c. FIFO (mkfifo Library Function or mknod system call)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+SOFT LINK 
+Command: ln -s ../../../Desktop/demo.py softlinktodemo
+total 8
+prw-rw-r-- 1 aditya aditya    0 Aug  8 16:28 demopipe
+-rwxrwxrwx 2 root   root    485 Aug  7 18:35 hardlinktodemo
+-rw-rw-r-- 1 aditya aditya 1432 Aug  8 16:28 output.txt
+lrwxrwxrwx 1 aditya aditya   24 Aug  8 16:35 softlinktodemo -> ../../../Desktop/demo.py
+
+
+HARD LINK
+Command: ln -l ../../Desktop/demo.py hardlinktodemo
+total 8
+prw-rw-r-- 1 aditya aditya    0 Aug  8 16:28 demopipe
+-rwxrwxrwx 2 root   root    485 Aug  7 18:35 hardlinktodemo
+-rw-rw-r-- 1 aditya aditya 1432 Aug  8 16:28 output.txt
+lrwxrwxrwx 1 aditya aditya   24 Aug  8 16:35 softlinktodemo -> ../../../Desktop/demo.py
+
+
+FIFO
+Command: mkfifo demopipe
+Command: ls-l > demopipe
+1) Open New Terminal
+2) Go to same directory where you created the pipe
+Command: cat demopipe
+total 8
+prw-rw-r-- 1 aditya aditya    0 Aug  8 16:28 demopipe
+-rwxrwxrwx 2 root   root    485 Aug  7 18:35 hardlinktodemo
+-rw-rw-r-- 1 aditya aditya 1432 Aug  8 16:28 output.txt
+lrwxrwxrwx 1 aditya aditya   24 Aug  8 16:35 softlinktodemo -> ../../../Desktop/demo.py
+
