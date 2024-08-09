@@ -1,0 +1,16 @@
+/*
+NAME: Aditya AV
+ROLLNO: MT2024009
+PROGRAM:
+4. Write a program to open an existing file with read write mode. Try O_EXCL flag also. 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+1) Complile and execute the file: pg4.c
+	./pg4.out [File Name]
+2) It shows success
+2) Compile and execute again it must throw file already exists error
+
+
+Additional info:
+1) if this flag  is  specified  in  conjunction with O_CREAT, and pathname already exists, then open() fails with the error EEXIST.
