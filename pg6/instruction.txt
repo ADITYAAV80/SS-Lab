@@ -1,0 +1,20 @@
+/*
+NAME: Aditya AV
+ROLLNO: MT2024009
+PROGRAM:
+6. Write a program to take input from STDIN and display on STDOUT. Use only read/write system calls
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+1) Compile and Run : pg6.c
+2) Enter a input string less than 1024 characters in terminal after running the program
+3) The Output will appear in terminal
+
+Additional Info:
+1) Read function takes fd [0(stdin)] as  first argument
+2) Second argument specifies buffer which is character array of 1024 characters in this case
+3) The third argument specifies the number of bytes:  you can either sizeof() function or calculate it manually ( helpful for custom value)
+4) It returns the no of bytes read
+5) Similar format for write function if we specify more bytes to write than present in buffer then it may print junk value
+6) Also no of bytes read will 1 + no of characters you enter as it stores \n 
+

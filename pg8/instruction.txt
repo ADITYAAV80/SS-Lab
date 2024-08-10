@@ -1,0 +1,14 @@
+/*
+NAME: Aditya AV
+ROLLNO: MT2024009
+PROGRAM:
+8. Write a program to open a file in read only mode, read line by line and display each line as it is read.
+Close the file when end of file is reached.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+1) Create a file contaning new lines 
+2) Compile and Run : pg8.c
+3) Specify file in command line during execution : ./pg8.out [file name to be read from]
+
+
