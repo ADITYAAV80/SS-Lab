@@ -1,0 +1,12 @@
+/*
+NAME: Aditya AV
+ROLLNO: MT2024009
+PROGRAM:
+12. Write a program to find out the opening mode of a file. Use fcntl.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
+1) Compile and execute the program: pg12.c
+2) While executing specify file name as command line argument: ./pg12.out [file_name]
+
+
