@@ -22,7 +22,6 @@ int main(int argc, char *argv[]){
 		else{
 			printf("ERROR\n");
 			sleep(30);
-			break;
 		}
 
 		ret[2] = open("f2.txt", O_CREAT );
@@ -32,7 +31,6 @@ int main(int argc, char *argv[]){
 		else{
 			printf("ERROR\n");
 			sleep(30);
-			break;
 		}
 
 		ret[3] = open("f3.txt", O_CREAT  );
@@ -42,7 +40,6 @@ int main(int argc, char *argv[]){
 		else{
 			printf("ERROR\n");
 			sleep(30);
-			break;
 		}
 
 		ret[4] = open("f4.txt", O_CREAT );
@@ -52,7 +49,6 @@ int main(int argc, char *argv[]){
 		else{
 			printf("ERROR\n");
 			sleep(30);
-			break;
 		}
 
 		ret[5] = open("f5.txt", O_CREAT );
