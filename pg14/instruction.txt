@@ -7,3 +7,6 @@ a. Input should be taken from command line.
 b. program should be able to identify any type of a file.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */
+
+1) Compile and execute the file: pg14.c
+2) Provide argument to command line during excecution:./pg14.out [file/link/directory/pipe/special file(block & character)

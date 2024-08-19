@@ -27,7 +27,13 @@ int main( int argc, char * argv[]){
 			break;
 		}
 		if (c=='\n'){
-			printf("\n");
+			while(1){
+				char cfe;
+				int icfe = read(0,&cfe,1);
+				if (cfe=='\n'){
+					break;
+				}
+			}
 		}
 		else{
 			write(1,&c,1);
