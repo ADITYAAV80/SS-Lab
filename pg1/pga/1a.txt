@@ -1,11 +1,13 @@
 /*
 
-NAME : Aditya AV
+NAME : 1a.txt
+AUTHOR : Aditya AV
 ROLL NO : MT2024009
-PROGRAM : Create the following types of a files using shell command
+PROGRAM : Create the following types of a files using i)shell command
  a. soft link (symlink system call)
  b. hard link (link system call)
  c. FIFO (mkfifo Library Function or mknod system call)
+DATE : 8th AUG 2024
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
 */
@@ -27,6 +29,14 @@ prw-rw-r-- 1 aditya aditya    0 Aug  8 16:28 demopipe
 -rw-rw-r-- 1 aditya aditya 1432 Aug  8 16:28 output.txt
 lrwxrwxrwx 1 aditya aditya   24 Aug  8 16:35 softlinktodemo -> ../../../Desktop/demo.py
 
+Command: ls -i in Desktop
+5022162 demo.py  5028420 readme.txt
+
+Command: ls -i in SS-lab/pg1/pga
+5256076 demopipe        5256105 output.txt
+5022162 hardlinktodemo  5256068 softlinktodemo
+
+Inode numbers are same for hardlinktodemo and demo.py
 
 FIFO
 Command: mkfifo demopipe

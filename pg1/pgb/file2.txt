@@ -1,0 +1,1 @@
+This file will be copied in file2.txt using fifo
