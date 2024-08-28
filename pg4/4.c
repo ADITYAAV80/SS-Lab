@@ -40,8 +40,6 @@ int main(int argc, char* argv[]){
 
 aditya@laptop:~/SS-Lab/pg4$ ./4.out
 Please enter file name in CLI
-file open error:: Bad address
-
 
 aditya@laptop:~/SS-Lab/pg4$ ./4.out file.txt
 File opened successfully
