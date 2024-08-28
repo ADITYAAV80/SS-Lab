@@ -17,6 +17,7 @@ int main(int argc, char* argv[]){
 
 	if (argc!=2){
 		printf("Please enter file name in CLI\n");
+		exit(0);
 	}
 	int ret = open(argv[1], O_CREAT | O_RDWR  | O_EXCL, 0700);
 	if (ret != -1){
