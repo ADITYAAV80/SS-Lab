@@ -22,13 +22,14 @@ int main(){
 	}
 	end = __rdtsc();
 
-	printf("Time taken to execute 100 getppid() system call %llu\n",end-start);
+	printf("Time taken to execute 100 getppid() system call %f ns\n",(end-start)/4.4);
+	// my system frequency is 4400 Mhz
 	return 0;
 }
 
 /* OUTPUT 
 
-aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg4$ ./a.out
-Time taken to execute 100 getppid() system call 68448
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg4$ ./4.out
+Time taken to execute 100 getppid() system call 44916.363636 ns
 
 */

@@ -29,10 +29,20 @@ int main(){
 	int r = read(0,buf1,sizeof(buf1));
 
 	write(pipefds[1],buf1,r);
+	close(pipefds[1]);
 	read(pipefds[0],buf,r);
+	close(pipefds[0]);
+
 	printf("Data which is being read from stdin : %s\n",buf);
 
-	close(pipefds[0]);
-	close(pipefds[1]);
 	return 0;
 }
+
+/* OUTPUT
+
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg14$ ./14.out
+Please enter text to be passed into pipe: 
+hello
+Data which is being read from stdin : hello
+
+*/

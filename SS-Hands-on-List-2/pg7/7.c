@@ -43,4 +43,7 @@ This is thread 140355311761088
 This is thread 140355303368384
 This is thread 140355294975680
 
+Additional info:
+values returned by pthread_create() = values returned by pthread_self() [returns the ID of calling process]
+
 */

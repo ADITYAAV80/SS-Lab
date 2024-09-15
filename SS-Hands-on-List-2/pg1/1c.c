@@ -35,18 +35,20 @@ void handler(int signum){
 int main(int argc, char * argv[]){
 
 	struct itimerval timer;
-	signal(SIGVTALRM, handler);
+	signal(SIGPROF, handler);
 
 	timer.it_value.tv_sec = 2;
 	timer.it_value.tv_usec = 0;
 	timer.it_interval.tv_sec = 5;
 	timer.it_interval.tv_usec = 0;
 
-	setitimer(ITIMER_VIRTUAL,&timer,NULL);
+	setitimer(ITIMER_PROF,&timer,NULL);
 	int count = 0;
 	while(1){
 		for (long long i = 0; i < 1000000000; ++i);
-		sleep(1);
+                sleep(1);
+		//slightly faster as it calculates the time sleep 
+		//system call was executed
 	}
 	return 0;
 }

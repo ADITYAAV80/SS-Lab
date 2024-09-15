@@ -28,12 +28,14 @@ int main(){
 /* OUTPUT
 
 aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg13$ ./13init.out &
-[2] 40292
+[1] 18185
 aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg13$ ./13.out
 Enter PID to be killed
-40292
+18185
 SIGSTOP Signal sent
 
-[2]+  Stopped                 ./13init.out
+[1]+  Stopped                 ./13init.out
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg13$ cat /proc/18185/status | grep State
+State:	T (stopped)
 
 */
