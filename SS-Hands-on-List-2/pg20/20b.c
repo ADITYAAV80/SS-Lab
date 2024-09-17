@@ -24,5 +24,5 @@ int main(){
 	char buf[500];
 	int r = read(fd,buf,sizeof(buf));
 	printf("No of bytes read from a : %d\n",r);
-	printf("%s",buf);
+	printf("%s\n",buf);
 }

@@ -32,8 +32,6 @@ int main(){
 		int w = write(pipefdspc[1],&pbuf,sizeof(pbuf));
 		if (w==-1){ perror("write");exit(0);}
 
-		sleep(2);
-
 		char *cbuf;
 		int r = read(pipefdscp[0],&cbuf,sizeof(cbuf));
 		if (r==-1){ perror("read");exit(0);}
@@ -55,7 +53,6 @@ int main(){
 		int w = write(pipefdscp[1],&cbuf,sizeof(cbuf));
 		if (w==-1){ perror("write");exit(0);}
 
-		sleep(2);
 
 		char *pbuf;
 		int r = read(pipefdspc[0],&pbuf,sizeof(pbuf));
@@ -77,4 +74,10 @@ Parent with pid 15477 reads :: Hello from the child side
 
 Child with pid 15478 and parent pid 15477 reads :: Hello from the parent side
 
+
+		(A) fdpc[1]--------|--|  |--------fdpc[1] (A)
+    parent	(X) fdpc[0]--------|  |->|--------fdpc[0] (X)  child
+
+		(A) fdcp[0]--------|<-|  |--------fdcp[0] (X)
+		(X) fdcp[1]--------|  |--|--------fdcp[1] (A)
 */

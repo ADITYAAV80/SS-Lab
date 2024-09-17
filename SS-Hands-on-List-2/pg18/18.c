@@ -26,11 +26,11 @@ int main(){
 		sleep(1);
 		close(pipefds2[0]);
 		close(pipefds2[1]);
-		close(pipefds1[1]);
+		close(pipefds1[0]);
 
-		dup2(pipefds1[0],0);
-		char *args[] = {"wc",NULL};
-		int w = execv("/bin/wc", args);
+		dup2(pipefds1[1],1);  		//replacing stdout with fds1[0]
+		char *args[] = {"ls","-l",NULL};
+		int w = execv("/bin/ls", args);
 
 		close(pipefds1[1]);
 		wait(0);
@@ -41,11 +41,11 @@ int main(){
 		if(fork()){
 
 			sleep(1);
-			close(pipefds1[0]);
-			close(pipefds2[1]);
+			close(pipefds1[1]);
+			close(pipefds2[0]);
 
-			dup2(pipefds2[0],0);
-			dup2(pipefds1[1],1);
+			dup2(pipefds1[0],0);	//replacing stdin  with fds1[1]
+			dup2(pipefds2[1],1);    //replacing stdout with fds2[0]
 			char *args[] = {"grep","^d",NULL};
 			int w = execv("/bin/grep", args);
 
@@ -58,11 +58,11 @@ int main(){
 
 			close(pipefds1[1]);
 			close(pipefds1[0]);
-			close(pipefds2[0]);
+			close(pipefds2[1]);
 
-			dup2(pipefds2[1],1);
-			char *args[] = {"ls", "-l", NULL};
-			int w =execv("/bin/ls", args);
+			dup2(pipefds2[0],0);  //replacing stdin with fds2[0]
+			char *args[] = {"wc", NULL};
+			int w =execv("/bin/wc", args);
 			close(pipefds2[1]);
 
 		}
@@ -72,7 +72,12 @@ int main(){
 /* OUTPUT
 
 aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg18$ ./18.out
-      0       0       0
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg18$       0       0       0
+
+
+		     (X) fd1[0]--------|       |--------fd1[0] (A)  -->grep--> (A) fd2[1]-------|	     |------fd2[0] (A) -->-wc
+    parent       		       |-------|					        |------------|
+	   ls-l -->  (A) fd1[1]--------|       |--------fd1[1] (X)	       (X) fd2[0]-------|	     |------fd2[1] (X)  
 
 */
 

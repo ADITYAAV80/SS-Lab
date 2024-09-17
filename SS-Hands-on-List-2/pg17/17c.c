@@ -53,4 +53,8 @@ int main(){
 aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg17$ ./17c.out
       7      56     327
 
+				(X) fd[0]--------|       |-------- ~stdin~ --> fd[0] -->wc (A)
+    parent		      		         |-------|	               			child
+	   ls-l --> ~stdout~ ->	(A) fd[1]--------|	 |--------fd[1] (X)
+
 */

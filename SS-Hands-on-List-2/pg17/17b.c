@@ -28,7 +28,7 @@ int main(){
 	if (!fork()){
 
 		close(pipefds[0]);
-		dup2(pipefds[1],1);
+		dup2(pipefds[1],1);			//replacing stdout
 		char *args[] = {"ls","-l",NULL};
 		execv("/bin/ls",args);
 		close(pipefds[1]);
@@ -37,7 +37,7 @@ int main(){
 	else{
 
 		close(pipefds[1]);
-		dup2(pipefds[0],0);
+		dup2(pipefds[0],0);			//replacing stdin
 		char *args[] = {"wc",NULL};
 		execv("/bin/wc",args);
 		close(pipefds[0]);
@@ -49,5 +49,10 @@ int main(){
 
 aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg17$ ./17b.out
       5      38     221
+
+				(X) fd[0]--------|       |-------- ~stdin~ --> fd[0] -->wc (A)
+    parent		      		         |-------|	               			child
+	   ls-l --> ~stdout~ ->	(A) fd[1]--------|	 |--------fd[1] (X)
+
 
 */

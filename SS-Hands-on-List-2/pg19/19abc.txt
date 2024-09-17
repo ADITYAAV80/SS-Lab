@@ -1,0 +1,126 @@
+a)
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg19$ mkfifo myfifo
+
+b) 
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg19$ mknod myfifo1 p
+
+OUTPUT
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg19$ ls
+19.c  19.out  myfifo  myfifo1
+
+
+c)
+
+FIFO DOESN'T EXIST 
+
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg19$ strace -c mkfifo myfifo2
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+  0.00    0.000000           0         5           read
+  0.00    0.000000           0         8           close
+  0.00    0.000000           0        18           mmap
+  0.00    0.000000           0         5           mprotect
+  0.00    0.000000           0         1           munmap
+  0.00    0.000000           0         3           brk
+  0.00    0.000000           0         2           pread64
+  0.00    0.000000           0         2         2 access
+  0.00    0.000000           0         1           execve
+  0.00    0.000000           0         2         2 statfs
+  0.00    0.000000           0         2         1 arch_prctl
+  0.00    0.000000           0         1           set_tid_address
+  0.00    0.000000           0         6           openat
+  0.00    0.000000           0         1           mknodat
+  0.00    0.000000           0         6           newfstatat
+  0.00    0.000000           0         1           set_robust_list
+  0.00    0.000000           0         1           prlimit64
+  0.00    0.000000           0         1           getrandom
+  0.00    0.000000           0         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000000           0        67         5 total
+
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg19$ strace -c mknod myfifo3 p
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+  0.00    0.000000           0         5           read
+  0.00    0.000000           0         8           close
+  0.00    0.000000           0        18           mmap
+  0.00    0.000000           0         5           mprotect
+  0.00    0.000000           0         1           munmap
+  0.00    0.000000           0         3           brk
+  0.00    0.000000           0         2           pread64
+  0.00    0.000000           0         2         2 access
+  0.00    0.000000           0         1           execve
+  0.00    0.000000           0         2         2 statfs
+  0.00    0.000000           0         2         1 arch_prctl
+  0.00    0.000000           0         1           set_tid_address
+  0.00    0.000000           0         6           openat
+  0.00    0.000000           0         1           mknodat
+  0.00    0.000000           0         6           newfstatat
+  0.00    0.000000           0         1           set_robust_list
+  0.00    0.000000           0         1           prlimit64
+  0.00    0.000000           0         1           getrandom
+  0.00    0.000000           0         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000000           0        67         5 total
+
+
+FIFO EXISTS
+
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg19$ strace -c mkfifo myfifo
+mkfifo: cannot create fifo 'myfifo': File exists
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+  0.00    0.000000           0         7           read
+  0.00    0.000000           0         4           write
+  0.00    0.000000           0        10           close
+  0.00    0.000000           0        19           mmap
+  0.00    0.000000           0         5           mprotect
+  0.00    0.000000           0         1           munmap
+  0.00    0.000000           0         3           brk
+  0.00    0.000000           0         2           pread64
+  0.00    0.000000           0         2         2 access
+  0.00    0.000000           0         1           execve
+  0.00    0.000000           0         2         2 statfs
+  0.00    0.000000           0         2         1 arch_prctl
+  0.00    0.000000           0         1           set_tid_address
+  0.00    0.000000           0        31        23 openat
+  0.00    0.000000           0         1         1 mknodat
+  0.00    0.000000           0         8           newfstatat
+  0.00    0.000000           0         1           set_robust_list
+  0.00    0.000000           0         1           prlimit64
+  0.00    0.000000           0         1           getrandom
+  0.00    0.000000           0         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000000           0       103        29 total
+
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg19$ strace -c mknod myfifo3 p
+mknod: myfifo3: File exists
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+  0.00    0.000000           0         7           read
+  0.00    0.000000           0         4           write
+  0.00    0.000000           0         9           close
+  0.00    0.000000           0        18           mmap
+  0.00    0.000000           0         5           mprotect
+  0.00    0.000000           0         1           munmap
+  0.00    0.000000           0         3           brk
+  0.00    0.000000           0         2           pread64
+  0.00    0.000000           0         2         2 access
+  0.00    0.000000           0         1           execve
+  0.00    0.000000           0         2         2 statfs
+  0.00    0.000000           0         2         1 arch_prctl
+  0.00    0.000000           0         1           set_tid_address
+  0.00    0.000000           0        19        12 openat
+  0.00    0.000000           0         1         1 mknodat
+  0.00    0.000000           0         7           newfstatat
+  0.00    0.000000           0         1           set_robust_list
+  0.00    0.000000           0         1           prlimit64
+  0.00    0.000000           0         1           getrandom
+  0.00    0.000000           0         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.000000           0        88        18 total
+
+MKNOD BETTER MKFIFO as MKFIFO INVOKES MKNOD
+
+both open 
+mknodat(AT_FDCWD, "myfifo3", S_IFIFO|0666) = -1 EEXIST (File exists)

@@ -28,8 +28,8 @@ int main(){
 	if (!fork()){
 
 		close(pipefds[0]);
-		close(1);
-		dup(pipefds[1]);
+		close(1);				//closing stdout
+		dup(pipefds[1]);			//pipefds[1] occupies stdout place in fd table
 		char *args[] = {"ls","-l",NULL};
 		execv("/bin/ls",args);
 		close(pipefds[1]);
@@ -38,8 +38,8 @@ int main(){
 	else{
 
 		close(pipefds[1]);
-		close(0);
-		dup(pipefds[0]);
+		close(0);				//closing stdin
+		dup(pipefds[0]);			//pipefds[0] occupies stdin place in fd table
 		char *args[] = {"wc",NULL};
 		execv("/bin/wc",args);
 		close(pipefds[0]);
@@ -51,5 +51,9 @@ int main(){
 
 aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg17$ ./a.out
       3      20     113
+
+				(X) fd[0]--------|       |-------- ~stdin~ --> fd[0] -->wc (A)
+    parent		      		         |-------|	               			child
+	   ls-l --> ~stdout~ ->	(A) fd[1]--------|	 |--------fd[1] (X)
 
 */

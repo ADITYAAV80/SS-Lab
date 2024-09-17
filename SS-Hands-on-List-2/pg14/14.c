@@ -17,8 +17,8 @@ DATE: 07 SEP 2024
 
 int main(){
 
-	char buf[100];
 	char buf1[100];
+	char buf2[100];
 	int pipefds[2];
 
 	if (pipe(pipefds) == -1){
@@ -26,23 +26,24 @@ int main(){
 		exit(0);
 	}
 	printf("Please enter text to be passed into pipe: \n");
-	int r = read(0,buf1,sizeof(buf1));
+	scanf("%[^\n]",buf1);
 
-	write(pipefds[1],buf1,r);
+	int w = write(pipefds[1],buf1,strlen(buf1));
 	close(pipefds[1]);
-	read(pipefds[0],buf,r);
+
+	int r = read(pipefds[0],buf2,w);
 	close(pipefds[0]);
 
-	printf("Data which is being read from stdin : %s\n",buf);
+	printf("Data which is being read from stdin : %s\n",buf2);
 
 	return 0;
 }
 
 /* OUTPUT
 
-aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg14$ ./14.out
+aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg14$ ./a.out
 Please enter text to be passed into pipe: 
-hello
-Data which is being read from stdin : hello
+hello from the other side
+Data which is being read from stdin : hello from the other side
 
 */

@@ -20,19 +20,17 @@ int main(){
 	const char *path = "myfifo";
 
 	int ret = mkfifo(path,0666);
-	if (ret == -1){ perror("mkfifo"); exit(0);}
+	if (ret == -1){ perror("mkfifo");}
 
 	char buf[500];
 	printf("Data to be sent from a to b:\n");
-	int r = read(0,buf,sizeof(buf));
-	if (r == -1){ perror("read"); exit(0);}
-	else{ printf("no of bytes read %d\n",r);}
-	buf[r] = '\0';
+	scanf("%[^\n]",buf);
+
 
 	int fd = open(path, O_WRONLY);
-	if ( fd == -1){ perror("open"); exit(0);}
+	if (fd == -1){ perror("open"); exit(0);}
 
-	int w = write(fd,buf,r);
+	int w = write(fd,buf,strlen(buf));
 	if (w == -1){ perror("write"); exit(0);}
 	else{ printf("no of bytes written %d\n",w);}
 	close(fd);
