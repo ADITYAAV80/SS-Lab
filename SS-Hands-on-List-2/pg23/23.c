@@ -4,7 +4,7 @@ AUTHOR: Aditya AV
 ROLLNO: MT2024009
 PROGRAM:23. Write a program to print the maximum number of files can be opened 
 within a process and size of a pipe (circular buffer).
-DATE:24 SEP 2024
+DATE:16 SEP 2024
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */
 
