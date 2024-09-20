@@ -12,24 +12,35 @@ DATE: 18 SEP 2024
 
 #include<stdio.h>
 #include<stdlib.h>
-#include<semaphore.h>
-
+#include<sys/sem.h>
+union semun {
+	int val;
+	struct semid_ds *buf;
+	unsigned short int *array;
+};
 int main() {
 
-        sem_t counting_semaphore;
-    	if(sem_init(&counting_semaphore, 0, 1)==-1){
-		perror("sem_init");
+	key_t key = ftok(".", 1);
+	if( key == -1){ perror("ftok");exit(0);}
+
+	int semid = semget(key, 1, IPC_CREAT|0777);//no of semaphores = 1
+
+        union semun arg;
+	arg.val = 100;//counting semaphore
+
+	int ret = semctl(semid,0,SETVAL,arg);
+	if (ret != -1){
+    		printf("Counting semaphore created and initialized\n");
+	}
+	else{
+		perror("semctl");
 		exit(0);
 	}
-    	printf("Counting semaphore created and initialized.\n");
-    	sem_destroy(&counting_semaphore);
-
 }
 
 /* OUTPUT
 
 aditya@laptop:~/SS-Lab/SS-Hands-on-List-2/pg31$ ./31b.out
-Counting semaphore created and initialized.
-
+Binary semaphore created and initialized.
 
 */
